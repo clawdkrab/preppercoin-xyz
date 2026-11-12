@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- custom -->
+<!-- PREPPER: Emergency Broadcast System x doomsday-prepper bunker. Hand-built, single file. -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PREPPER ($PREPPER) | He bought bread and milk before everyone else</title>
+<meta name="description" content="$PREPPER: the cat who bought bread and milk before the apocalypse. The first true early buyer. A doomsday-bunker meme coin on Solana.">
+<meta name="theme-color" content="#1a0500">
+<meta property="og:title" content="PREPPER ($PREPPER)">
+<meta property="og:description" content="This is not a test. Bread and milk levels critical. $PREPPER on Solana.">
+<meta property="og:image" content="banner.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{--ash:#1a0500;--lava:#ff4b00;--lava2:#ffb000;--hz:#ffd000;--steel:#5d646b;--steel2:#8a939b;--paper:#f2ead3;--grn:#39ff6a;
+--stencil:"Black Ops One",Impact,sans-serif;--mono:"Share Tech Mono",ui-monospace,Menlo,monospace;--type:"Special Elite","Courier New",monospace;--forum:Verdana,Tahoma,Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;overflow-x:hidden}
+body{background:var(--ash);color:#f7e6d0;font-family:var(--mono);font-size:16px;line-height:1.6;padding-top:36px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+.hz{background:repeating-linear-gradient(-45deg,var(--hz) 0 18px,#111 18px 36px)}
+h2{font-family:var(--stencil);font-weight:400;font-size:clamp(38px,6.5vw,72px);line-height:1;margin:0 0 18px;letter-spacing:1px}
+.kick{font-family:var(--mono);color:var(--hz);letter-spacing:3px;font-size:14px;margin-bottom:6px}
+/* ===== EBS intro ===== */
+#ebs{position:fixed;inset:0;z-index:200;display:grid;grid-template-rows:67% 8% 25%;cursor:pointer}
+#ebs.gone{display:none}
+.bars1{background:linear-gradient(90deg,#c0c0c0 0 14.28%,#c0c000 0 28.56%,#00c0c0 0 42.84%,#00c000 0 57.12%,#c000c0 0 71.4%,#c00000 0 85.68%,#0000c0 0)}
+.bars2{background:linear-gradient(90deg,#0000c0 0 14.28%,#131313 0 28.56%,#c000c0 0 42.84%,#131313 0 57.12%,#00c0c0 0 71.4%,#131313 0 85.68%,#c0c0c0 0)}
+.bars3{background:linear-gradient(90deg,#00214c 0 17.85%,#fff 0 35.7%,#32006a 0 53.55%,#131313 0 76%,#090909 0 81%,#1d1d1d 0)}
+.ebsbox{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);background:#000;color:#fff;border:4px solid #fff;padding:22px 26px;text-align:center;width:min(560px,90vw)}
+.ebsbox h1{font-family:var(--stencil);font-weight:400;font-size:clamp(26px,5vw,42px);margin:0 0 8px;line-height:1.05}
+.ebsbox p{margin:6px 0;font-size:15px}
+.ebsbox .tone{font-size:13px;color:var(--hz);animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.ack{margin-top:12px;background:#fff;color:#000;border:0;padding:10px 20px;font-family:var(--stencil);font-size:16px;letter-spacing:1px}
+/* ===== crawl ===== */
+#crawl{position:fixed;top:0;left:0;right:0;height:36px;z-index:100;background:#c00;color:#fff;display:flex;align-items:center;overflow:hidden;border-bottom:3px solid var(--hz)}
+#crawl b{flex:none;background:var(--hz);color:#000;height:100%;display:grid;place-items:center;padding:0 12px;font-family:var(--stencil);font-weight:400;font-size:15px;z-index:1}
+#crawl .t{white-space:nowrap;padding-left:100%;animation:cr 38s linear infinite;font-size:16px;letter-spacing:1px}
+@keyframes cr{to{transform:translateX(-100%)}}
+/* ===== doom-o-meter ===== */
+#geiger{position:fixed;right:14px;bottom:14px;z-index:90;width:178px;background:linear-gradient(#e8c33a,#b9921a);border:3px solid #111;border-radius:10px;padding:8px;box-shadow:4px 4px 0 #000;color:#111;user-select:none}
+#geiger .lbl{font-family:var(--stencil);font-size:13px;text-align:center;letter-spacing:1px}
+.dial{position:relative;height:74px;background:var(--paper);border:2px solid #111;border-radius:80px 80px 6px 6px;overflow:hidden}
+.dial svg{position:absolute;inset:0;width:100%;height:100%}
+#needle{position:absolute;left:50%;bottom:4px;width:2px;height:60px;background:#c00;transform-origin:50% 100%;transform:rotate(-60deg)}
+.read{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:12px}
+.read span{background:#111;color:var(--grn);padding:1px 6px;font-family:var(--mono);min-width:76px;text-align:right}
+.led{width:10px;height:10px;border-radius:50%;background:#400;border:1px solid #000}.led.on{background:#f22;box-shadow:0 0 8px #f22}
+#gmsg{font-size:11px;text-align:center;margin-top:4px;font-weight:700;min-height:1.2em}
+/* ===== HERO: apocalypse parallax ===== */
+.hero{position:relative;height:calc(100vh - 36px);min-height:620px;overflow:hidden;background:linear-gradient(#3b0a00 0%,#9a2300 45%,#ff6a00 72%,#2a0800 100%)}
+.ly{position:absolute;left:-10%;right:-10%;will-change:transform;pointer-events:none}
+.ashA{top:-10%;height:70%;background:radial-gradient(30% 40% at 20% 40%,rgba(30,10,5,.85),transparent 70%),radial-gradient(28% 35% at 70% 30%,rgba(40,15,5,.8),transparent 70%),radial-gradient(25% 30% at 50% 60%,rgba(60,20,5,.6),transparent 70%);filter:blur(10px)}
+.ashB{top:20%;height:40%;background:radial-gradient(20% 50% at 85% 50%,rgba(20,5,0,.8),transparent 70%),radial-gradient(22% 45% at 10% 50%,rgba(20,5,0,.7),transparent 70%);filter:blur(6px)}
+.met{position:absolute;width:160px;height:3px;background:linear-gradient(90deg,transparent,#ffe7a0,#fff);border-radius:3px;transform:rotate(25deg);opacity:0;animation:met 4s linear infinite;box-shadow:0 0 10px #ffb000}
+@keyframes met{0%{opacity:0;translate:0 0}10%{opacity:1}60%{opacity:1}100%{opacity:0;translate:520px 250px}}
+.volc{bottom:0;height:62%}
+.volc svg{width:100%;height:100%;display:block}
+.lavaGlow{bottom:-5%;height:30%;background:radial-gradient(50% 60% at 50% 100%,rgba(255,170,0,.9),transparent 70%);animation:pulse 2.4s ease-in-out infinite alternate}
+@keyframes pulse{to{opacity:.55}}
+.embers{position:absolute;inset:0;background-image:radial-gradient(2px 2px at 10% 80%,#ffcc66,transparent),radial-gradient(2px 2px at 30% 60%,#ff8844,transparent),radial-gradient(3px 3px at 70% 70%,#ffdd88,transparent),radial-gradient(2px 2px at 85% 40%,#ff9944,transparent),radial-gradient(2px 2px at 50% 30%,#ffbb55,transparent);background-size:400px 400px;animation:rise 9s linear infinite}
+@keyframes rise{to{background-position:0 -400px}}
+.heroIn{position:relative;z-index:3;height:100%;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.heroTxt h1{font-family:var(--stencil);font-weight:400;font-size:clamp(64px,12vw,150px);line-height:.85;margin:0;color:var(--hz);text-shadow:0 0 30px rgba(255,120,0,.6),5px 5px 0 #000}
+.heroTxt .tick{display:inline-block;background:#000;color:var(--grn);padding:4px 10px;margin:10px 0;font-size:16px;border:1px solid var(--grn)}
+.heroTxt p{font-family:var(--type);font-size:clamp(18px,2.2vw,22px);max-width:520px;text-shadow:2px 2px 0 #000}
+.btn{display:inline-block;font-family:var(--stencil);font-size:22px;letter-spacing:2px;text-decoration:none;color:#000;background:var(--hz);padding:14px 28px;border:4px solid #000;box-shadow:6px 6px 0 #000;transition:transform .15s}
+.btn:hover{transform:translate(-2px,-2px) rotate(-1deg)}
+.btn.red{background:#c00;color:#fff}
+.mon{justify-self:center;width:min(360px,80vw);background:#222;border:10px solid #3a3a3a;border-radius:14px;box-shadow:0 20px 60px #000,inset 0 0 0 2px #000;position:relative}
+.mon img{width:100%;aspect-ratio:474/700;object-fit:cover;object-position:top;max-height:calc(100vh - 200px)}
+.mon::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0 2px,transparent 2px 4px);pointer-events:none}
+.live{position:absolute;top:10px;left:10px;z-index:2;background:#c00;color:#fff;font-family:var(--stencil);font-size:14px;padding:2px 8px}
+.live::before{content:"\25CF ";animation:bl 1s steps(1) infinite}
+.chyron{position:absolute;bottom:12px;left:-24px;right:-24px;z-index:2;background:#fff;color:#000;font-family:var(--stencil);font-size:15px;padding:6px 10px;border-left:10px solid #c00;box-shadow:4px 4px 0 #000}
+/* ===== checklist ===== */
+.sec{padding:100px 0;position:relative}
+.listGrid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.clip{background:var(--paper);color:#222;padding:44px 28px 26px;border-radius:6px;position:relative;box-shadow:10px 10px 0 #000;rotate:-1.5deg;font-family:var(--type)}
+.clip::before{content:"";position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:120px;height:36px;background:linear-gradient(#aaa,#666);border:3px solid #333;border-radius:6px}
+.clip h3{font-family:var(--stencil);font-weight:400;font-size:24px;margin:0 0 12px;color:#900}
+.clip label{display:flex;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid #c9bfa5;cursor:pointer;font-size:18px}
+.clip input{appearance:none;-webkit-appearance:none;width:24px;height:24px;border:2px solid #222;flex:none;display:grid;place-items:center;margin:0;background:#fff}
+.clip input:checked::after{content:"X";font-family:var(--stencil);color:#c00;font-size:22px;line-height:1}
+.clip input:checked + span{text-decoration:line-through;text-decoration-color:#c00;text-decoration-thickness:3px}
+.clip small{font-size:13px;color:#776}
+.prog{height:16px;border:2px solid #222;margin-top:14px;background:#fff}.prog div{height:100%;width:0;background:repeating-linear-gradient(-45deg,#c00 0 8px,#900 8px 16px);transition:width .3s}
+.advice{text-align:center}
+.advice img{width:min(300px,80%);margin:0 auto;border:6px solid #000;box-shadow:8px 8px 0 var(--hz);rotate:3deg}
+.advice p{font-family:var(--type);font-size:17px;max-width:420px;margin:18px auto 0}
+/* ===== bunker hatch ===== */
+#hatch{height:220vh;position:relative}
+.hstage{position:sticky;top:36px;height:calc(100vh - 36px);overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 50%,#3a3f44,#121416 70%)}
+.inside{position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 50% 40%,#3d3320,#120e06 70%);padding:20px}
+.inside h2{color:var(--hz)}
+.inside p{font-family:var(--type);font-size:19px;max-width:560px;margin:0 auto}
+.bulb{width:24px;height:24px;border-radius:50%;background:#ffde80;box-shadow:0 0 50px 20px rgba(255,210,100,.5);margin:0 auto 20px}
+.door{position:absolute;top:0;bottom:0;width:50%;background:repeating-linear-gradient(0deg,#5d646b 0 4px,#565d64 4px 8px);will-change:transform;z-index:2;box-shadow:inset 0 0 40px rgba(0,0,0,.6)}
+.door.l{left:0;border-right:4px solid #222}.door.r{right:0;border-left:4px solid #222}
+.door .rivets{position:absolute;inset:16px;border:4px dotted #2c3136}
+.door .hzs{position:absolute;left:0;right:0;height:34px;bottom:12%}
+.door.l .lab{position:absolute;right:20px;top:20%;font-family:var(--stencil);font-size:clamp(22px,4vw,48px);color:var(--hz);text-align:right;line-height:1}
+.door.r .lab{position:absolute;left:20px;top:20%;font-family:var(--stencil);font-size:clamp(14px,2vw,22px);color:#fff;line-height:1.2}
+.wheel{position:absolute;z-index:3;left:50%;top:50%;width:min(240px,48vw);aspect-ratio:1;margin:0;translate:-50% -50%;border-radius:50%;border:16px solid #9a1a1a;box-shadow:0 0 0 6px #222,inset 0 0 0 6px #222;will-change:transform}
+.wheel::before,.wheel::after{content:"";position:absolute;left:50%;top:-8px;bottom:-8px;width:16px;margin-left:-8px;background:#9a1a1a;border:3px solid #222}
+.wheel::after{transform:rotate(90deg)}
+.wheel i{position:absolute;inset:34%;border-radius:50%;background:#555;border:5px solid #222;z-index:1}
+.hint{position:absolute;bottom:20px;left:0;right:0;text-align:center;z-index:4;font-family:var(--stencil);color:var(--hz);letter-spacing:2px;text-shadow:2px 2px #000}
+/* ===== forum lore ===== */
+.forum{background:#e9e4d6;color:#222;font-family:var(--forum);font-size:13px;border:1px solid #444;box-shadow:10px 10px 0 #000}
+.fhead{background:linear-gradient(#556b2f,#3b4a21);color:#fff;padding:10px 14px;font-weight:700;font-size:13px}
+.fhead big{display:block;font-family:var(--stencil);font-weight:400;font-size:24px;color:var(--hz)}
+.crumb{padding:6px 14px;background:#d8d1bd;border-bottom:1px solid #999;font-size:11px}
+.crumb a{color:#334}
+.post{display:grid;grid-template-columns:170px 1fr;border-bottom:1px solid #999}
+.who{background:#d8d1bd;padding:12px;border-right:1px solid #999;font-size:11px}
+.who b{display:block;font-size:13px;color:#7a2a00}
+.who .av{width:80px;height:80px;margin:8px 0;border:2px solid #444;object-fit:cover}
+.msg{padding:14px 18px;font-size:14px;line-height:1.65}
+.msg .date{font-size:11px;color:#666;border-bottom:1px dashed #aaa;padding-bottom:6px;margin-bottom:10px}
+.msg p{margin:0 0 12px}
+.sig{border-top:1px solid #aaa;margin-top:12px;padding-top:6px;font-size:11px;color:#555;font-style:italic}
+.quote{background:#fff;border:1px solid #999;padding:8px 10px;margin:0 0 10px;font-size:12px}
+.quote b{display:block;font-size:11px;color:#666}
+/* ===== evidence board gallery ===== */
+.board{position:relative;background:#a8743f;background-image:radial-gradient(rgba(0,0,0,.18) 1px,transparent 1.5px),radial-gradient(rgba(255,255,255,.1) 1px,transparent 1.5px);background-size:7px 7px,11px 11px;border:14px solid #5a3a1a;padding:30px 20px;box-shadow:inset 0 0 40px rgba(0,0,0,.5),10px 10px 0 #000;display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.board svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.pin{position:relative;z-index:2;background:#fff;padding:8px 8px 30px;box-shadow:3px 5px 10px rgba(0,0,0,.5);border:0;transition:transform .2s;text-align:center;font-family:var(--type);color:#222;font-size:13px}
+.pin:nth-child(odd){rotate:-3deg}.pin:nth-child(3n){rotate:4deg}
+.pin:hover,.pin:focus{transform:scale(1.07);z-index:3;outline:none}
+.pin::before{content:"";position:absolute;top:-6px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff6b6b,#a00);box-shadow:1px 2px 2px rgba(0,0,0,.5)}
+.pin img{width:100%;aspect-ratio:1;object-fit:cover;margin-bottom:6px}
+#lb{position:fixed;inset:0;z-index:150;background:rgba(10,3,0,.88);display:none;place-items:center;padding:20px}
+#lb.on{display:grid}
+.lbin{background:var(--paper);color:#222;padding:14px;max-width:min(520px,92vw);border:4px solid #000;box-shadow:8px 8px 0 var(--hz);font-family:var(--type);position:relative}
+.lbin img{max-height:70vh;margin:0 auto}
+.x{position:absolute;top:-16px;right:-16px;width:40px;height:40px;border:3px solid #000;background:#c00;color:#fff;font-family:var(--stencil);font-size:20px}
+/* ===== evacuation (how to buy) ===== */
+.evac{border:6px solid #000;background:#111}
+.evac .top{padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--hz);color:#000;font-family:var(--stencil);font-size:20px}
+.evac ol{list-style:none;margin:0;padding:0;counter-reset:e;display:grid;grid-template-columns:repeat(5,1fr)}
+.evac li{counter-increment:e;padding:22px 18px;border-right:2px dashed #444;font-size:15px}
+.evac li:last-child{border-right:0}
+.evac li::before{content:counter(e);display:block;font-family:var(--stencil);font-size:54px;color:var(--lava);line-height:1}
+.evac li b{display:block;color:var(--hz);font-family:var(--stencil);font-weight:400;font-size:18px;margin:4px 0}
+/* ===== ration card / CA ===== */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.ration{background:var(--paper);color:#222;font-family:var(--type);padding:24px;border:2px solid #222;position:relative;box-shadow:8px 8px 0 #000}
+.ration h3{font-family:var(--stencil);font-weight:400;font-size:26px;margin:0 0 4px}
+.ration table{width:100%;border-collapse:collapse;margin-top:10px;font-size:16px}
+.ration td{border:1px solid #444;padding:8px}
+.ration td:first-child{width:46%;background:#e6dcc0}
+.stamp{position:absolute;right:18px;bottom:20px;font-family:var(--stencil);color:#c00;border:4px solid #c00;padding:4px 10px;rotate:-14deg;font-size:22px;opacity:.85}
+.radio{background:#2b2f26;border:4px solid #000;padding:22px;box-shadow:8px 8px 0 #000}
+.radio .lcd{background:#9bb87a;color:#1d2a10;font-family:var(--mono);font-size:20px;padding:12px;border:3px inset #555;word-break:break-all;min-height:56px}
+.radio button.cp{margin-top:12px;background:var(--hz);border:3px solid #000;padding:8px 18px;font-family:var(--stencil);font-size:16px;color:#000}
+.freq{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.freq a:first-child{grid-column:1/-1}.freq a{display:block;text-decoration:none;background:#111;border:2px solid var(--grn);color:var(--grn);padding:10px;font-size:14px}
+.freq a:hover{background:var(--grn);color:#000}
+.freq a small{display:block;font-size:11px;opacity:.8}
+footer{padding:50px 20px 120px;text-align:center;font-size:13px;color:#c9a98a;max-width:860px;margin:0 auto}
+footer .eof{font-family:var(--stencil);font-size:28px;color:var(--hz);margin-bottom:12px}
+/* popup */
+#pop{position:fixed;left:50%;top:50%;z-index:160;transform:translate(-50%,-50%);width:min(400px,90vw);background:#000;border:4px solid var(--hz);padding:24px;text-align:center;display:none;box-shadow:0 0 0 9999px rgba(0,0,0,.6)}
+#pop.on{display:block}
+#pop h3{font-family:var(--stencil);font-weight:400;color:var(--hz);font-size:28px;margin:0 0 8px}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .7s,transform .7s}
+.rv.vis{opacity:1;transform:none}
+@media (max-width:900px){
+.heroIn,.listGrid,.duo{grid-template-columns:1fr}
+.heroIn{padding-top:30px;align-content:start;gap:16px}.mon{width:min(240px,60vw)}
+.hero{height:auto;min-height:calc(100vh - 36px);padding-bottom:40px}
+.board{grid-template-columns:repeat(2,1fr)}
+.evac ol{grid-template-columns:1fr}.evac li{border-right:0;border-bottom:2px dashed #444}
+.post{grid-template-columns:1fr}.who{border-right:0;border-bottom:1px solid #999;display:flex;gap:10px;align-items:center}.who .av{width:50px;height:50px;margin:0}
+#geiger{width:140px;right:8px;bottom:8px}.dial{height:56px}#needle{height:44px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+@supports (overflow:clip){html,body{overflow-x:clip}}
+</style>
+</head>
+<body>
+
+<!-- EBS INTRO -->
+<div id="ebs" role="dialog" aria-label="Emergency broadcast">
+<div class="bars1"></div><div class="bars2"></div><div class="bars3"></div>
+<div class="ebsbox">
+<p style="color:var(--hz)">EMERGENCY BREAD-CAST SYSTEM</p>
+<h1>PLEASE STAND BY</h1>
+<p>The following is a test of the Emergency Bread-cast System. Had this been an actual emergency, you would already be out of milk.</p>
+<p class="tone">[ ATTENTION SIGNAL: BEEEEEEEEEEEEP ]</p>
+<button class="ack" id="ack">ACKNOWLEDGE</button>
+</div>
+</div>
+
+<div id="crawl" role="marquee" aria-label="Alert crawl"><b>EAS ALERT</b><div class="t">*** THIS IS NOT A TEST *** BREAD AND MILK LEVELS CRITICAL IN YOUR AREA *** A CAT HAS ALREADY BOUGHT ALL OF IT *** RESIDENTS ARE ADVISED TO REMAIN CALM AND BUY $PREPPER *** METEOR ACTIVITY: MODERATE *** VOLCANO: VIBING *** DO NOT LOOK DIRECTLY AT THE CHART *** STAY TUNED FOR FURTHER INSTRUCTIONS ***</div></div>
+
+<!-- DOOM-O-METER -->
+<div id="geiger" aria-label="Doom-o-meter" role="img">
+<div class="lbl">DOOM-O-METER</div>
+<div class="dial">
+<svg viewBox="0 0 160 74" aria-hidden="true"><path d="M20 70 A60 60 0 0 1 140 70" fill="none" stroke="#111" stroke-width="2"/><path d="M110 22 A60 60 0 0 1 140 70" fill="none" stroke="#c00" stroke-width="8"/><text x="10" y="40" font-size="9" font-family="monospace">CALM</text><text x="62" y="18" font-size="9" font-family="monospace">BREAD?</text><text x="118" y="40" font-size="9" font-family="monospace" fill="#c00">OVER</text></svg>
+<div id="needle"></div>
+</div>
+<div class="read"><i class="led" id="led"></i><span id="cpm">0012 CPM</span></div>
+<div id="gmsg">all good (for now)</div>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+<div class="ly ashA" data-fix="0.15"></div>
+<div class="ly" data-fix="0.25" style="top:0;height:60%">
+<span class="met" style="left:10%;top:10%"></span>
+<span class="met" style="left:45%;top:2%;animation-delay:1.3s"></span>
+<span class="met" style="left:70%;top:18%;animation-delay:2.6s;width:100px"></span>
+<span class="met" style="left:25%;top:30%;animation-delay:3.4s;width:80px"></span>
+</div>
+<div class="ly ashB" data-fix="0.35"></div>
+<div class="ly volc" data-fix="0.08">
+<svg viewBox="0 0 1200 500" preserveAspectRatio="none" aria-hidden="true"><path d="M0 500 L0 330 L260 280 L460 90 L540 70 L600 90 L780 270 L1000 300 L1200 260 L1200 500Z" fill="#1c0703"/><path d="M500 75 L520 160 L490 240 L530 330 L500 500 L560 500 L580 320 L545 230 L575 150 L560 72Z" fill="#ff5a00" opacity=".9"/><path d="M0 420 Q300 380 600 430 T1200 400 L1200 500 L0 500Z" fill="#0d0301"/></svg>
+</div>
+<div class="ly lavaGlow" data-fix="0.05"></div>
+<div class="ly" data-fix="0.5" style="inset:0"><div class="embers"></div></div>
+<div class="wrap heroIn">
+<div class="heroTxt">
+<div class="kick">EMERGENCY BROADCAST &middot; CHANNEL 4 &middot; SOLANA</div>
+<h1>PREPPER</h1>
+<span class="tick">$PREPPER</span>
+<p>The sky is on fire. The shops are empty. One cat got there first. <b>Bread. Milk. Bags packed.</b> The first true early buyer.</p>
+<a class="btn" href="#buy">PANIC BUY $PREPPER</a>
+</div>
+<div class="mon" data-speed="-0.1">
+<span class="live">LIVE</span>
+<img src="meme_01.jpg" alt="A tabby cat standing upright holding a loaf of bread and a bottle of milk in front of an erupting volcano and a burning sky" width="474" height="842">
+<div class="chyron">LOCAL CAT: "I SAW IT COMING"</div>
+</div>
+</div>
+</header>
+
+<!-- CHECKLIST -->
+<section class="sec" id="list">
+<div class="wrap listGrid">
+<div class="clip rv">
+<h3>PANIC-BUY CHECKLIST</h3>
+<small>Official Prepper Guidelines rev. 7 (the volcano one)</small>
+<form id="chk">
+<label><input type="checkbox"><span>Bread (1 loaf, held aggressively)</span></label>
+<label><input type="checkbox"><span>Milk (1 jug, glass, dramatic)</span></label>
+<label><input type="checkbox"><span>Batteries (for the radio)</span></label>
+<label><input type="checkbox"><span>Canned beans (emotional support)</span></label>
+<label><input type="checkbox"><span>Tinfoil hat (cat-sized)</span></label>
+<label><input type="checkbox"><span><b>$PREPPER</b> (before everyone else)</span></label>
+</form>
+<div class="prog"><div id="prog"></div></div>
+</div>
+<div class="advice rv">
+<div class="kick">MEANWHILE, TOPSIDE ADVICE</div>
+<img src="meme_02.jpg" alt="Advice dog meme on a rainbow background reading BUY HIGH SELL LOW" width="250" height="248">
+<p>The dog on the surface says buy high, sell low. The dog on the surface is still looking for milk. Be the cat.</p>
+</div>
+</div>
+</section>
+
+<!-- HATCH -->
+<section id="hatch" aria-label="Bunker hatch">
+<div class="hstage">
+<div class="inside">
+<div>
+<div class="bulb"></div>
+<h2>WELCOME TO THE BUNKER</h2>
+<p>Population: one cat, one loaf, one jug, and every early holder of $PREPPER. Shoes off. Mind the canned beans.</p>
+</div>
+</div>
+<div class="door l" id="dl"><div class="rivets"></div><div class="lab">BUNKER<br>NO. 1</div><div class="hzs hz"></div></div>
+<div class="door r" id="dr"><div class="rivets"></div><div class="lab">AUTHORISED<br>CATS ONLY<br>&middot;<br>NO DOGS<br>(they sell low)</div><div class="hzs hz"></div></div>
+<div class="wheel" id="wheel"><i></i></div>
+<div class="hint" id="hint">SCROLL TO OPEN HATCH &darr;</div>
+</div>
+</section>
+
+<!-- LORE: prepper forum -->
+<section class="sec" id="lore">
+<div class="wrap">
+<div class="forum rv">
+<div class="fhead"><big>SurvivalBoards</big>The internet's #1 forum for people who own too many water barrels</div>
+<div class="crumb"><a href="#lore">Board Index</a> &raquo; <a href="#lore">Bunker Talk</a> &raquo; <a href="#lore">I TOLD YOU SO (megathread)</a></div>
+<div class="post">
+<div class="who"><img class="av" src="logo.png" alt="" width="80" height="80" loading="lazy"><div><b>BreadCat</b>Rank: Supreme Overlord of Pantry<br>Posts: 9,999<br>Location: Underground<br>Joined: before it was cool</div></div>
+<div class="msg">
+<div class="date">Posted: the day the sky caught fire &middot; Subject: <b>Re: guys the volcano</b></div>
+<p>Nobody knows exactly where the picture came from. It just exists: a tabby cat, standing on two legs, holding a loaf of bread and a jug of milk, staring at you while a volcano erupts behind him and the sky turns into a bonfire. No context. No caption. He simply did his shopping.</p>
+<p>Everyone knows the ritual. A storm is coming, so the whole town sprints to the shop and buys bread and milk. Why bread and milk? Nobody knows. It's tradition. It's instinct. It's the oldest panic buy in human history.</p>
+<p>This cat bought his before the volcano. Before the meteors. Before the alert crawl even started. While you were refreshing the news, he was already in line with exact change. <b>He is the first true early buyer.</b></p>
+<div class="quote"><b>AdviceDog wrote:</b>just buy high and sell low bro, trust</div>
+<p>Respectfully, no. That is why you are outside and I am in the bunker.</p>
+<p>$PREPPER is a coin for people who get there first. It does nothing else. It is bread and milk in coin form, which is to say, purely symbolic and extremely emotional. Stock up.</p>
+<div class="sig">-- BreadCat | 2 loaves, 1 jug, 0 regrets | "The best time to buy bread was before the volcano. The second best time is now."</div>
+</div>
+</div>
+<div class="post">
+<div class="who"><b>xX_Tinfoil_Xx</b>Rank: Lurker<br>Posts: 3</div>
+<div class="msg"><div class="date">Posted: 4 min later</div><p>is the milk ok after the lava</p><div class="sig">-- trust no cloud</div></div>
+</div>
+<div class="post">
+<div class="who"><b>BreadCat</b>Rank: Supreme Overlord of Pantry</div>
+<div class="msg"><div class="date">Posted: 1 min later</div><p>the milk is fine. the milk has always been fine.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY: evidence board -->
+<section class="sec" id="gallery">
+<div class="wrap">
+<div class="kick">CLASSIFIED &middot; DO NOT REMOVE FROM BUNKER</div>
+<h2 class="rv">THE EVIDENCE BOARD</h2>
+<div class="board rv" id="board"><svg id="strings" aria-hidden="true"></svg></div>
+</div>
+</section>
+
+<!-- HOW TO BUY -->
+<section class="sec" id="buy">
+<div class="wrap">
+<h2 class="rv">EVACUATION PROCEDURE</h2>
+<div class="evac rv">
+<div class="top"><span>FOLLOW THESE STEPS IN ORDER</span><span>DO NOT PANIC (PANIC BUY)</span></div>
+<ol>
+<li><b>GET PHANTOM</b>Install the Phantom wallet app or browser extension. Store your seed phrase in the bunker, offline.</li>
+<li><b>GET SOL</b>Buy SOL on an exchange and send it to your Phantom wallet. Keep a little extra for fees.</li>
+<li><b>GO TO PUMP.FUN</b>Head to pump.fun and connect your Phantom wallet.</li>
+<li><b>PASTE THE CA</b>Copy the official contract address from this page and paste it into the search. Only trust this one.</li>
+<li><b>BUY $PREPPER</b>Choose an amount, confirm, and retreat underground with your snacks.</li>
+</ol>
+</div>
+</div>
+</section>
+
+<!-- TOKENOMICS + CA -->
+<section class="sec" id="ca">
+<div class="wrap duo">
+<!-- only keep these claims if true at launch -->
+<div class="ration rv">
+<h3>RATION CARD</h3>
+<div style="font-size:14px">Issued by the Department of Bread &amp; Milk</div>
+<table>
+<tr><td>Name</td><td>PREPPER</td></tr>
+<tr><td>Ticker</td><td>$PREPPER</td></tr>
+<tr><td>Chain</td><td>Solana</td></tr>
+<tr><td>Total supply</td><td>1,000,000,000</td></tr>
+<tr><td>Launch</td><td>Fair launch on pump.fun</td></tr>
+<tr><td>Bread allowance</td><td>1 loaf per cat</td></tr>
+</table>
+<div class="stamp">APPROVED</div>
+</div>
+<div class="radio rv">
+<div class="kick">EMERGENCY FREQUENCY // CONTRACT ADDRESS</div>
+<div class="lcd" id="caText">Contract address revealed at launch</div>
+<button class="cp" id="copy">COPY CA</button> <span id="copied" style="font-size:14px;color:var(--grn)"></span>
+<div class="freq">
+<a href="#">X / TWITTER<small>CH 1: surface reports</small></a>
+
+<a href="#">PUMP.FUN<small>CH 2: supply depot</small></a>
+<a href="#">DEXSCREENER<small>CH 3: doom radar</small></a>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="eof">END OF TRANSMISSION</div>
+<p><b>$PREPPER is a meme coin with no intrinsic value and no expectation of financial return.</b> It is for entertainment only. Nothing here is financial advice and nothing here is real emergency information. In an actual emergency, follow your local authorities, not a cat.</p>
+<p>Not affiliated with any government agency, broadcaster, emergency alert system, or survival forum. The cat and advice-dog images are widely shared memes of unknown origin.</p>
+</footer>
+
+<!-- lightbox + popup -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Evidence photo"><div class="lbin"><button class="x" id="lbx" aria-label="Close">X</button><img id="lbimg" src="meme_01.jpg" alt=""><p id="lbcap" style="margin:10px 0 0"></p></div></div>
+<div id="pop" role="dialog" aria-label="Prepared"><h3>YOU ARE PREPARED</h3><p>Preparedness level: <b style="color:var(--hz)">CAT</b>. Proceed to the bunker. Bring the beans.</p><button class="btn" id="popx" style="font-size:16px;padding:10px 18px">CLOSE HATCH</button></div>
+
+<script>
+const CA = "";
+(function(){
+var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+var $ = function(s){ return document.querySelector(s); };
+
+/* ---- EBS intro ---- */
+var ebs = $('#ebs');
+function closeEbs(){ ebs.classList.add('gone'); }
+if (RM) closeEbs(); else setTimeout(closeEbs, 3800);
+ebs.addEventListener('click', closeEbs);
+
+/* ---- parallax, hatch, doom-o-meter ---- */
+var fixed = [].slice.call(document.querySelectorAll('[data-fix]'));
+var flow = [].slice.call(document.querySelectorAll('[data-speed]'));
+var hatch = $('#hatch'), dl = $('#dl'), dr = $('#dr'), wheel = $('#wheel'), hint = $('#hint');
+var needle = $('#needle'), cpm = $('#cpm'), gmsg = $('#gmsg'), led = $('#led');
+var msgs = ['all good (for now)','hm.','buy bread?','BUY MILK','it\'s so over','we\'re so back (in the bunker)'];
+var ticking = false, doom = 0;
+function frame(){
+ticking = false;
+var y = scrollY, vh = innerHeight, max = document.documentElement.scrollHeight - vh;
+if (y < vh*1.3) fixed.forEach(function(el){ el.style.transform = 'translate3d(0,' + (y*parseFloat(el.dataset.fix)).toFixed(1) + 'px,0)'; });
+flow.forEach(function(el){
+var r = el.parentElement.getBoundingClientRect();
+el.style.transform = 'translate3d(0,' + ((r.top + r.height/2 - vh/2)*parseFloat(el.dataset.speed)).toFixed(1) + 'px,0)';
+});
+var hr = hatch.getBoundingClientRect();
+var p = Math.min(1, Math.max(0, -hr.top / (hr.height - vh)));
+var open = Math.max(0, (p - .3)/.6); open = Math.min(1, open);
+wheel.style.transform = 'rotate(' + (Math.min(p/.3, 1)*540) + 'deg) scale(' + (1 - open*.6) + ')';
+wheel.style.opacity = 1 - open;
+dl.style.transform = 'translate3d(' + (-open*101) + '%,0,0)';
+dr.style.transform = 'translate3d(' + (open*101) + '%,0,0)';
+hint.style.opacity = 1 - Math.min(1, p*4);
+doom = max > 0 ? y/max : 0;
+setNeedle();
+}
+function setNeedle(){
+var jit = RM ? 0 : (Math.random() - .5)*6;
+needle.style.transform = 'rotate(' + (-60 + doom*120 + jit).toFixed(1) + 'deg)';
+cpm.textContent = String(12 + Math.round(doom*9980 + Math.random()*20)).padStart(4, '0') + ' CPM';
+gmsg.textContent = msgs[Math.min(msgs.length - 1, Math.floor(doom*msgs.length))];
+}
+function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(frame); } }
+addEventListener('scroll', onScroll, {passive:true});
+addEventListener('resize', onScroll);
+frame();
+if (!RM){
+(function click(){
+led.classList.add('on'); setTimeout(function(){ led.classList.remove('on'); }, 60);
+setNeedle();
+setTimeout(click, 900 - doom*800 + Math.random()*300);
+})();
+}
+
+/* ---- reveal ---- */
+var rv = document.querySelectorAll('.rv');
+if ('IntersectionObserver' in window && !RM){
+var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } }); }, {threshold:.12});
+rv.forEach(function(e){ io.observe(e); });
+} else rv.forEach(function(e){ e.classList.add('vis'); });
+
+/* ---- checklist ---- */
+var boxes = document.querySelectorAll('#chk input'), prog = $('#prog'), pop = $('#pop'), popped = false;
+$('#chk').addEventListener('change', function(){
+var n = 0; boxes.forEach(function(b){ if (b.checked) n++; });
+prog.style.width = (n/boxes.length*100) + '%';
+if (n === boxes.length && !popped){ popped = true; pop.classList.add('on'); }
+});
+$('#popx').addEventListener('click', function(){ pop.classList.remove('on'); });
+
+/* ---- evidence board ---- */
+var ev = [
+['meme_01.jpg','EXHIBIT A: the cat, the bread, the milk, the volcano.'],
+['meme_02.jpg','EXHIBIT B: topside advice. Do not follow.'],
+['remix_01.jpg','EXHIBIT C: photo taken closer to the lava.'],
+['remix_02.jpg','EXHIBIT D: security cam footage. Low budget bunker.'],
+['remix_03.jpg','EXHIBIT E: he went back for a second milk. Legend.'],
+['remix_04.jpg','EXHIBIT F: negative scan. The milk is now orange. Concerning.'],
+['remix_05.jpg','EXHIBIT G: the official $PREPPER briefing photo.'],
+['remix_06.jpg','EXHIBIT H: the dog, radioactive edition. Still selling low.']
+];
+var board = $('#board');
+board.insertAdjacentHTML('beforeend', ev.map(function(e, i){
+return '<button class="pin" data-i="' + i + '"><img src="' + e[0] + '" alt="" loading="lazy">EXHIBIT ' + String.fromCharCode(65 + i) + '</button>';
+}).join(''));
+var svg = $('#strings');
+function strings(){
+var pins = board.querySelectorAll('.pin'), br = board.getBoundingClientRect(), pts = [];
+pins.forEach(function(p){ var r = p.getBoundingClientRect(); pts.push([r.left - br.left + r.width/2, r.top - br.top + 4]); });
+var d = '';
+var order = [0,5,2,7,1,4,3,6,0];
+order.forEach(function(k, i){ if (pts[k]) d += (i ? ' L' : 'M') + pts[k][0].toFixed(0) + ' ' + pts[k][1].toFixed(0); });
+svg.innerHTML = '<path d="' + d + '" fill="none" stroke="#c00" stroke-width="2.5" opacity=".85"/>';
+}
+addEventListener('load', strings); addEventListener('resize', strings); setTimeout(strings, 600);
+var lb = $('#lb');
+board.addEventListener('click', function(e){
+var b = e.target.closest('.pin'); if (!b) return;
+var x = ev[+b.dataset.i];
+$('#lbimg').src = '' + x[0]; $('#lbimg').alt = x[1]; $('#lbcap').textContent = x[1];
+lb.classList.add('on');
+});
+$('#lbx').addEventListener('click', function(){ lb.classList.remove('on'); });
+lb.addEventListener('click', function(e){ if (e.target === lb) lb.classList.remove('on'); });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ lb.classList.remove('on'); pop.classList.remove('on'); closeEbs(); } });
+
+/* ---- CA ---- */
+if (CA) $('#caText').textContent = CA;
+$('#copy').addEventListener('click', function(){
+var o = $('#copied');
+if (!CA){ o.textContent = 'Not yet. Revealed at launch.'; return; }
+if (navigator.clipboard) navigator.clipboard.writeText(CA).then(function(){ o.textContent = 'Copied. Stock up.'; }, function(){ o.textContent = 'Copy failed. Select it manually.'; });
+});
+})();
+</script>
+</body>
+</html>
